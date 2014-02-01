@@ -114,14 +114,21 @@ class WPCollab_HelloEmoji {
 
 	} // END __construct()
 	
-	
+	/**
+	 * @todo
+	 * 
+	 * @since	1.0.0
+	 * @access	public
+	 * 
+	 * @see		apply_filters()
+	 * 
+	 * @return	array
+	 */
 	public function get_defaults() {
 		
-		$defaults = array(
-			'something'   => false,
-		);
+		$defaults = array();
 		
-		$options = apply_filters( 'hello-emoji-defaults', $defaults );
+		$options = apply_filters( 'wpcollab_hello_emoji_defaults', $defaults );
 		
 		return $options;
 	}
@@ -219,6 +226,27 @@ class WPCollab_HelloEmoji {
 	 * @return	void
 	 */
 	public function activate_plugin( $network_wide ) {
+		
+		$defaults = self::get_defaults();
+		
+		if ( is_multisite() && ( true == $network_wide ) ) {
+			
+			global $wpdb;
+			$blogs = $wpdb->get_results( "SELECT blog_id FROM {$wpdb->blogs}", ARRAY_A );
+
+			if ( $blogs ) {
+				foreach( $blogs as $blog ) {
+					switch_to_blog( $blog['blog_id'] );
+					add_option( 'wpcollab_hello_emoji_settings', $defaults );
+				}
+				restore_current_blog();
+			}
+			
+		} else {
+
+			add_option( 'wpcollab_hello_emoji_settings', $defaults );
+			
+		}
 		
 	} // END activate_plugin()
 

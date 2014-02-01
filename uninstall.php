@@ -19,13 +19,13 @@ if ( is_multisite() ) {
     if ( $blogs ) {
         foreach( $blogs as $blog ) {
             switch_to_blog( $blog['blog_id'] );
-            delete_option( '@todo_option' );
+            delete_option( 'wpcollab_hello_emoji_settings' );
         }
         restore_current_blog();
     }
 	
 } else {
 	
-    delete_option( '@todo_option' );
+    delete_option( 'wpcollab_hello_emoji_settings' );
 	
 }

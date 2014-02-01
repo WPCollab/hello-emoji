@@ -42,7 +42,7 @@ class WPCollab_HelloEmoji_Admin {
 	public static function get_instance() {
 
 		return self::$instance;
-
+		
 	} // END get_instance()
 
 	/**
@@ -57,6 +57,83 @@ class WPCollab_HelloEmoji_Admin {
 		
 		self::$instance = $this;
 		
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
+		add_action( 'load-options-writing.php', array( $this, 'help_tabs' ) );
+		
 	} // END __construct()
+	
+	/**
+	 * @todo description
+	 * 
+	 * @since	1.0.0
+	 * @access	public
+	 * 
+	 * @see __()
+	 * @see	add_settings_section()
+	 * @see	add_settings_field()
+	 * 
+	 * @return	void
+	 */
+	public function register_settings() {
+		
+		add_settings_section(
+			'emoji-settings',
+			__( 'Emoji Settings', 'hallo-emoji' ),
+			array( $this, 'defaults_desc'),
+			'writing'
+		);
+		
+		add_settings_field(
+			'defaults-output',
+			__( 'Defaults Field', 'hallo-emoji' ),
+			array( $this, 'render_field' ), // @TODO
+			'writing',
+			'emoji-settings',
+			array()
+		);
+		
+	} // END register_settings()
+	
+	/**
+	 * @todo
+	 *
+	 * @since	1.0.0
+	 * @access	public
+	 *
+	 * @see		get_current_screen()
+	 *
+	 * @return	string
+ 	 */
+	public function help_tabs() {
+		
+		/** @todo move to the end of the tabs */
+		$screen = get_current_screen();
+		$screen->add_help_tab(
+			array(
+				'id'        => 'wpcollab-hello-emoji_options',
+				'title'     => __( 'Emoji Help', 'hello-emoji' ),
+				'callback'  => '__return_empty_string' // array( $this, 'option_tab')
+			)
+		);
+		
+	} // END help_tabs()
+	
+	/**
+	 * @todo
+	 *
+	 * @since 1.0
+	 */		
+	function defaults_desc() {
+		echo '<p>' . __( 'Some Description', 'hallo-emoji' ) . '</p>';
+	}
+	
+	/**
+	 * @todo
+	 *
+	 * @since 1.0
+	 */		
+	function render_field() {
+		echo 'some-output';
+	}
 		
 } // END class WPCollab_HelloEmoji_Admin
