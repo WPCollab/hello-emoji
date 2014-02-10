@@ -106,8 +106,15 @@ class WPCollab_HelloEmoji_Admin {
 	 */
 	public function register_settings() {
 
+		add_settings_section(
+			'hello-emoji',
+			__( 'Hello Emoji', 'hello-emoji' ),
+			array( $this, 'section' ),
+			'discussion'
+		);
+
 		register_setting(
-			'writing',                 // settings page
+			'discussion',                 // settings page
 			'wpcollab_hello_emoji_settings'          // option name
 		);
 
@@ -115,8 +122,8 @@ class WPCollab_HelloEmoji_Admin {
 			'comment', // ID
 			__( 'Emojis', 'hello-emoji' ), // Label
 			array( $this, 'comments' ), // Callback
-			'writing', // Page on which to display
-			'default', // Section
+			'discussion', // Page on which to display
+			'hello-emoji', // Section
 			array(
 				'label_for' => 'wpcollab_hello_emoji_comment'
 			)
@@ -139,12 +146,29 @@ class WPCollab_HelloEmoji_Admin {
 
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'options-writing.php' ) . '">' . __( 'Settings', 'hello-emoji' ) . '</a>'
+				'settings' => '<a href="' . admin_url( 'options-discussion.php' ) . '#hello-emoji-settings">' . __( 'Settings', 'hello-emoji' ) . '</a>'
 			),
 			$links
 		);
 
 	} // END add_action_links()
+
+	/**
+	 * Add settings action link to the plugins page.
+	 *
+	 * @since    0.1.0
+	 * @access   public
+	 *
+	 * @see      _e()
+	 *
+	 * @return   string HTML of setting section
+	 */
+	public function section() {
+
+		?>
+		<p><a name="hello-emoji-settings"></a><?php _e( 'Activate to process emojis in comments in addition to post content.', 'hello-emoji' ); ?></p>
+		<?php
+	} // END section()
 
 	/**
 	 * Print the HTML of comments setting.
@@ -169,7 +193,6 @@ class WPCollab_HelloEmoji_Admin {
 			<input type='checkbox' id='wpcollab_hello_emoji_comment' name='wpcollab_hello_emoji_settings[comment]' value='1' <?php echo $checked; ?>/>
 			<?php _e( 'Enable emojis in comments', 'hello-emoji' ); ?>
 		</label>
-		<p class="description"><?php _e( 'Activate to process emojis in comments in addition to post content.', 'hello-emoji' ); ?></p>
 		<?php
 
 	} // END comments()
