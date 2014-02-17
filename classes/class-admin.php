@@ -146,7 +146,7 @@ class WPCollab_HelloEmoji_Admin {
 
 		return array_merge(
 			array(
-				'settings' => '<a href="' . admin_url( 'options-discussion.php' ) . '#hello-emoji-settings">' . __( 'Settings', 'hello-emoji' ) . '</a>'
+				'settings' => '<a href="' . admin_url( 'options-discussion.php' ) . '#hello-emoji-settings">' . __( 'Settings' ) . '</a>'
 			),
 			$links
 		);
