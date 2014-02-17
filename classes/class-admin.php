@@ -63,6 +63,8 @@ class WPCollab_HelloEmoji_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 		// Add an action link pointing to the options page.
 		add_filter( 'plugin_action_links_' . plugin_basename ( WPCollab_HelloEmoji::get_file() ), array( $this, 'add_action_links' ) );
+		// Add a meta links pointing to GitHub.
+		add_filter( 'plugin_row_meta', array( $this, 'set_plugin_meta' ), 10, 2 );
 
 	} // END __construct()
 
@@ -152,6 +154,32 @@ class WPCollab_HelloEmoji_Admin {
 		);
 
 	} // END add_action_links()
+
+	/**
+	 * Provide links to the GitHub repo and issue tracker on plugins.php
+	 *
+	 * @since	0.2.0
+	 * @access	public
+	 *
+	 * @see plugin_basename()
+	 * @uses WPCollab_HelloEmoji::get_file()
+	 *
+	 * @return array
+	 */
+	public function set_plugin_meta( $links, $file ) {
+
+		if ( $file == plugin_basename( WPCollab_HelloEmoji::get_file() ) ) { // @todo
+			return array_merge(
+				$links,
+				array(
+					'<a href="https://github.com/WPCollab/hello-emoji" target="_blank">GitHub</a>',
+					'<a href="https://github.com/WPCollab/hello-emoji/issues" target="_blank">Issues</a>',
+				)
+			);
+		}
+		return $links;
+
+	} // END set_plugin_meta()
 
 	/**
 	 * Add settings action link to the plugins page.
