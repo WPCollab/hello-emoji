@@ -9,7 +9,7 @@ Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin lets you use emojis in WordPress. Get an auto-complete list of emojis suggestions in the editor, and convert emoticons to emojis on display.
+This plugin lets you use emojis in WordPress. Emoticons will be converted to emoji, just start by typing ":" in the editor, and get an auto-complete list of emojis suggestions.
 
 == Description ==
 
