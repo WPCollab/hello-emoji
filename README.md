@@ -2,7 +2,7 @@
 [![Gitter chat](https://badges.gitter.im/WPCollab/hello-emoji.png)](https://gitter.im/WPCollab/hello-emoji)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/WPCollab/hello-emoji/badges/quality-score.png?s=c6bd803b8f7a81825ef645778313b2a2de2fdb5e)](https://scrutinizer-ci.com/g/WPCollab/hello-emoji/)
 
-This plugin lets you use emojis in WordPress. Get an auto-complete list of emojis suggestions in the editor, and convert emoticons to emojis on display.
+This plugin lets you use emojis in WordPress. Just start by typing ":" in the editor, and get an auto-complete list of emojis suggestions.
 
 [Homepage][1.1] | [WordPress.org][1.2]
 
