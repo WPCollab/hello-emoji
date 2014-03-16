@@ -58,10 +58,11 @@ class WPCollab_HelloEmoji_Frontend {
 
 		self::$instance = $this;
 
-		// Filter the_content to add a css class to the content
-		add_filter( 'the_content', array( 'WPCollab_HelloEmoji_Frontend', 'wrap_content' ) );
-		// Filter the_content to add a css class to the comment
-		add_filter( 'comment_text', array( 'WPCollab_HelloEmoji_Frontend', 'wrap_content' ) );
+		// Filters to add css classes that are targeted by the JS
+        $filters = $this->output_filters();
+		foreach ( $filters as $filter ) {
+            add_filter( 'the_content', array( 'WPCollab_HelloEmoji_Frontend', 'wrap_content' ) );
+	    }
 
 		// Load admin JavaScript
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
