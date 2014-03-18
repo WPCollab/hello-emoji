@@ -58,10 +58,11 @@ class WPCollab_HelloEmoji_Frontend {
 
 		self::$instance = $this;
 
-		// Filter the_content to add a css class to the content
-		add_filter( 'the_content', array( 'WPCollab_HelloEmoji_Frontend', 'wrap_content' ) );
-		// Filter the_content to add a css class to the comment
-		add_filter( 'comment_text', array( 'WPCollab_HelloEmoji_Frontend', 'wrap_content' ) );
+		// Filters to add css classes that are targeted by the JS
+		$filters = $this->output_filters();
+		foreach ( $filters as $filter ) {
+			add_filter( 'the_content', array( 'WPCollab_HelloEmoji_Frontend', 'wrap_content' ) );
+		}
 
 		// Load admin JavaScript
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_frontend_scripts' ) );
@@ -197,5 +198,29 @@ class WPCollab_HelloEmoji_Frontend {
 		}
 
 	} // END smilies_init()
+
+	/**
+	* Sets the filters hooked to wrap_content()
+	*
+	* @since 0.2.0
+	* @access public
+	*
+	* @see wrap_content()
+	* @see _construct()
+	*
+	* @return array
+	*/
+	public function output_filters() {
+		$filters = array( 'the_content', 'comment_text' );
+		/**
+		* Add or replace filters used to wrap in div for emoji processing.
+		*
+		* @param array $filters A list of filters to hook wrap_content to.
+		*
+		* @since 0.2.0
+		*/
+		$filters = apply_filters( 'wpcollab_hello_emoji_output_filters', $filters );
+		return $filters;
+	} //end output_filters()
 
 } // END class WPCollab_HelloEmoji_Frontend
