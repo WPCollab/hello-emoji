@@ -212,6 +212,7 @@ class WPCollab_HelloEmoji_Frontend {
 	*/
 	public function output_filters() {
 		$filters = array( 'the_content', 'comment_text' );
+
 		/**
 		* Add or replace filters used to wrap in div for emoji processing.
 		*
@@ -221,6 +222,7 @@ class WPCollab_HelloEmoji_Frontend {
 		*/
 		$filters = apply_filters( 'wpcollab_hello_emoji_output_filters', $filters );
 		return $filters;
+
 	} //end output_filters()
 
 } // END class WPCollab_HelloEmoji_Frontend
