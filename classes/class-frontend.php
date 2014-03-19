@@ -61,7 +61,7 @@ class WPCollab_HelloEmoji_Frontend {
 		// Filters to add css classes that are targeted by the JS
 		$filters = $this->output_filters();
 		foreach ( $filters as $filter ) {
-			add_filter( 'the_content', array( 'WPCollab_HelloEmoji_Frontend', 'wrap_content' ) );
+			add_filter( $filter, array( 'WPCollab_HelloEmoji_Frontend', 'wrap_content' ) );
 		}
 
 		// Load admin JavaScript
