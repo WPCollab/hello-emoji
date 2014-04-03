@@ -1,0 +1,66 @@
+# Copyright (C) 2014 Hello Emoji
+# This file is distributed under the same license as the Hello Emoji package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hello Emoji 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/WPCollab/hello-emoji/issues\n"
+"POT-Creation-Date: 2014-04-03 15:15:08+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Christian Foellmann <foellmann@foe-services.de>\n"
+"Language-Team: WPCollab Team <info@wpcollab.co>\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-Sourcecharset: utf-8\n"
+"X-Poedit-Keywordslist: "
+"__;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_"
+"x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-Searchpath-0: .\n"
+"X-Textdomain-Support: yes\n"
+
+#. Plugin Name of the plugin/theme
+msgid "Hello Emoji"
+msgstr ""
+
+#: classes/class-admin.php:124
+msgid "Emojis"
+msgstr ""
+
+#: classes/class-admin.php:150
+msgid "Settings"
+msgstr ""
+
+#: classes/class-admin.php:169
+msgid "Activate to process emojis in comments in addition to post content."
+msgstr ""
+
+#: classes/class-admin.php:194
+msgid "Enable emojis in comments"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/hello-emoji/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Hello Emoji is a plugin that converts emoticons to emoji. But it's more "
+"than a plugin, it symbolizes the hope and enthusiasm of an entire "
+"generation. It's proof of the idea that WordPress represents: that free "
+"software can bring people together to accomplish something that they "
+"couldn’t do themselves, while adding something of value to the commons for "
+"all to share."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WPCollab Team"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/WPCollab/Hello-Emoji/graphs/contributors"
+msgstr ""
