@@ -1,9 +1,48 @@
 # folders and files to be ignored by git
 
-############
-## IDEs
-############
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
 
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+*.rdb
+[Tt]humbs.db
+[Dd]esktop.ini
+*.DS_store
+.DS_store?
+
+# IDE files #
+#######################
+*.swp
+*.swo
 *.pydevproject
 .project
 .metadata
@@ -20,32 +59,23 @@ local.properties
 nbproject/
 .idea/
 
-############
-## OSes
-############
-
-[Tt]humbs.db
-[Dd]esktop.ini
-*.DS_store
-.DS_store?
-
-############
-## Misc
-############
-
+# Misc #
+#######################
 bin/
 tmp/
 *.tmp
 *.bak
-*.log
 *.[Cc]ache
 *.cpr
 *.orig
 *.php.in
-.idea/
 temp/
-._*
-.Trashes
 
-.svn
-.sass-cache
+# Development files #
+#####################
+cache/**/*
+logs/*
+.svn*
+node_modules
+npm-debug.log
+
