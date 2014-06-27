@@ -81,27 +81,14 @@ class WPCollab_HelloEmoji_Admin {
 
 		$dev = apply_filters( 'wpcollab_hello_emoji_debug_mode', WP_DEBUG ) ? '' : '.min';
 
-		if ( $hook == 'post.php' || $hook == 'post-new.php' || $hook == 'comment.php' ) { // @todo (de)activate for post_types activated in settings
+		if ( $hook == 'post.php' || $hook == 'post-new.php' || $hook == 'comment.php' || $hook == 'edit-comments.php' || $hook == 'index.php' ) { // @todo (de)activate for post_types activated in settings
+			wp_register_script( 'jquery-textcomplete-script', plugins_url( "lib/jquery-textcomplete/jquery.textcomplete{$dev}.js", WPCollab_HelloEmoji::get_file() ), array( 'jquery' ), WPCollab_HelloEmoji::$version, true );
 
-			wp_enqueue_script( 'jquery-textcomplete-script', plugins_url( "lib/jquery-textcomplete/jquery.textcomplete{$dev}.js", WPCollab_HelloEmoji::get_file() ), array( 'jquery' ), WPCollab_HelloEmoji::$version, true );
-			wp_enqueue_script( 'hello-emoji-admin-script', plugins_url( 'js/admin.js', WPCollab_HelloEmoji::get_file() ), array( 'jquery-textcomplete-script' ), WPCollab_HelloEmoji::$version, true );
+			wp_enqueue_script( 'hello-emoji-script', plugins_url( "js/hello-emoji{$dev}.js", WPCollab_HelloEmoji::get_file() ), array( 'jquery-textcomplete-script' ), WPCollab_HelloEmoji::$version, true );
 
-			wp_enqueue_style( 'jquery-textcomplete-style', plugins_url( "lib/jquery-textcomplete/jquery.textcomplete{$dev}.css", WPCollab_HelloEmoji::get_file() ), array(), WPCollab_HelloEmoji::$version );
-			wp_enqueue_style( 'hello-emoji-admin-style', plugins_url( 'css/admin.css', WPCollab_HelloEmoji::get_file() ), array(), WPCollab_HelloEmoji::$version );
+			wp_enqueue_style( 'hello-emoji-style', plugins_url( 'css/hello-emoji.css', WPCollab_HelloEmoji::get_file() ), array(), WPCollab_HelloEmoji::$version );
 
-			wp_localize_script( 'hello-emoji-admin-script', 'hello_emoji', array( 'images_src' => plugins_url( 'images/emoji', WPCollab_HelloEmoji::get_file() ) ) );
-
-		}
-
-		if ( $hook == 'edit-comments.php' ) {
-			$settings = get_option( 'wpcollab_hello_emoji_settings' );
-
-			if ( isset( $settings['comment'] ) ) {
-				wp_enqueue_script( 'jquery-emoji-script', plugins_url( 'lib/jquery-emoji/jquery.emoji.js', WPCollab_HelloEmoji::get_file() ), array( 'jquery' ), WPCollab_HelloEmoji::$version, true );
-				wp_enqueue_script( 'hello-emoji-script', plugins_url( 'js/hello-emoji.js', WPCollab_HelloEmoji::get_file() ), array( 'jquery-emoji-script' ), WPCollab_HelloEmoji::$version, true );
-
-				wp_localize_script( 'hello-emoji-script', 'hello_emoji', array( 'images_src' => plugins_url( 'images/emoji', WPCollab_HelloEmoji::get_file() ) ) );
-			}
+			wp_localize_script( 'hello-emoji-script', 'hello_emoji', array( 'images_src' => plugins_url( 'images/emoji', WPCollab_HelloEmoji::get_file() ) ) );
 		}
 
 	} // END enqueue_admin_scripts()
